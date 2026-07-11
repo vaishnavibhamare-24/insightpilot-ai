@@ -1,10 +1,7 @@
-from backend.config.settings import get_settings
-settings = get_settings()
 from fastapi import FastAPI
 
 from backend.api.v1.router import api_router
 from backend.schemas.common import HomeResponse
-
 
 
 app = FastAPI(
@@ -19,7 +16,11 @@ app.include_router(
 )
 
 
-@app.get("/", tags=["Root"], response_model=HomeResponse)
+@app.get(
+    "/",
+    tags=["Root"],
+    response_model=HomeResponse,
+)
 def home() -> HomeResponse:
     return HomeResponse(
         message="Welcome to InsightPilot AI",

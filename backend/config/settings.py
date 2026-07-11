@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     s3_processed_bucket: str = ""
     athena_output_bucket: str = ""
 
-    glue_database: str = "insightpilot_db"
+    glue_database: str = "insightpilot_raw_db"
 
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -25,5 +25,5 @@ class Settings(BaseSettings):
 
 
 @lru_cache
-def get_settings():
+def get_settings() -> Settings:
     return Settings()
