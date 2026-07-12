@@ -16,7 +16,12 @@ class Settings(BaseSettings):
     athena_output_bucket: str = ""
 
     glue_database: str = "insightpilot_raw_db"
-
+    ml_artifacts_bucket: str = ""
+    churn_model_s3_key: str = "models/churn/churn_model.joblib"
+    forecast_model_s3_key: str = "models/forecast/revenue_model.joblib"
+    mlflow_tracking_uri: str = (
+    "sqlite:///ml/experiments/mlflow.db"
+)
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",

@@ -1,3 +1,10 @@
+from backend.api.v1.forecast import (
+    router as forecast_router,
+)
+from backend.api.v1.predictions import (
+    router as predictions_router,
+)
+
 from backend.api.v1.endpoints import data_quality
 from fastapi import APIRouter
 
@@ -10,6 +17,9 @@ from backend.api.v1.health import (
 from backend.api.v1.storage import (
     router as storage_router,
 )
+
+
+
 
 api_router = APIRouter()
 
@@ -35,4 +45,22 @@ api_router.include_router(
     data_quality.router,
     prefix="/data-quality",
     tags=["Data Quality"],
+)
+
+api_router.include_router(
+    predictions_router,
+    prefix="/predictions",
+    tags=["Predictions"],
+)
+
+api_router.include_router(
+    predictions_router,
+    prefix="/predictions",
+    tags=["Predictions"],
+)
+
+api_router.include_router(
+    forecast_router,
+    prefix="/forecast",
+    tags=["Forecast"],
 )

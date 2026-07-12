@@ -1,0 +1,9 @@
+{
+  "model_name": "xgboost",
+  "reason": "Selected using the lowest RMSE, with MAPE and MAE used as secondary comparison metrics.",
+  "mae": 586725.6966666667,
+  "rmse": 796189.4776621264,
+  "mape": 1201.3454694657644,
+  "r2": -0.6725134841262728,
+  "selected_model_path": "C:\\Users\\Vaishnavi\\OneDrive\\Documents\\Projects\\InsightPilot-AI\\ml\\artifacts\\forecasting\\revenue_model.joblib"
+}
