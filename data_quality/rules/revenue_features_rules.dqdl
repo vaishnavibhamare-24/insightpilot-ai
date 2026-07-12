@@ -1,0 +1,6 @@
+Rules = [
+    ColumnValues "gross_revenue" >= 0,
+    ColumnValues "monthly_orders" >= 0,
+    ColumnValues "monthly_customers" >= 0,
+    ColumnValues "units_sold" >= 0
+]

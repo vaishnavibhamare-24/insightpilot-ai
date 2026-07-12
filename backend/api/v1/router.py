@@ -1,3 +1,4 @@
+from backend.api.v1.endpoints import data_quality
 from fastapi import APIRouter
 
 from backend.api.v1.analytics import (
@@ -28,4 +29,10 @@ api_router.include_router(
     analytics_router,
     prefix="/analytics",
     tags=["Analytics"],
+)
+
+api_router.include_router(
+    data_quality.router,
+    prefix="/data-quality",
+    tags=["Data Quality"],
 )

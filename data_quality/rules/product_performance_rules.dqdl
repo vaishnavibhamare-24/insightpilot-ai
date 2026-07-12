@@ -1,0 +1,6 @@
+Rules = [
+    IsComplete "product_id",
+    ColumnValues "total_product_orders" >= 0,
+    ColumnValues "total_units_sold" >= 0,
+    ColumnValues "product_revenue" >= 0
+]

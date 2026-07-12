@@ -1,0 +1,6 @@
+Rules = [
+    IsComplete "customer_id",
+    ColumnValues "churn_label" in [0, 1],
+    ColumnValues "estimated_clv" >= 0,
+    ColumnValues "total_orders" >= 0
+]

@@ -1,0 +1,5 @@
+Rules = [
+    IsComplete "product_id",
+    Uniqueness "product_id" = 1.0,
+    ColumnValues "price" >= 0
+]

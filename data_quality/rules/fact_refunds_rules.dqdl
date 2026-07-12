@@ -1,0 +1,6 @@
+Rules = [
+    IsComplete "refund_id",
+    IsComplete "order_id",
+    Uniqueness "refund_id" = 1.0,
+    ColumnValues "refund_amount" >= 0
+]
