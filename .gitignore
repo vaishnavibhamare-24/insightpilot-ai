@@ -40,3 +40,10 @@ __pycache__/
 
 # RAG evaluation output
 rag/evaluation/results/*.json
+
+# LangGraph and agent caches
+.langgraph_api/
+.cache/
+
+# Agent evaluation outputs
+agents/evaluation_results/

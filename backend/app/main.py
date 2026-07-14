@@ -1,28 +1,35 @@
-from fastapi import FastAPI
+﻿from fastapi import FastAPI
 
 from backend.api.v1.router import api_router
-from backend.schemas.common import HomeResponse
+from backend.config.settings import get_settings
+
+
+settings = get_settings()
 
 
 app = FastAPI(
-    title="InsightPilot AI",
-    description="Agentic Enterprise Data Intelligence Platform",
-    version="1.0.0",
-)
-
-app.include_router(
-    api_router,
-    prefix="/api/v1",
+    title=settings.app_name,
+    version=settings.app_version,
+    description=(
+        "InsightPilot AI analytics, machine learning, "
+        "enterprise RAG, and multi-agent API."
+    ),
 )
 
 
 @app.get(
     "/",
     tags=["Root"],
-    response_model=HomeResponse,
 )
-def home() -> HomeResponse:
-    return HomeResponse(
-        message="Welcome to InsightPilot AI",
-        status="Backend is running successfully!",
-    )
+def root() -> dict[str, str]:
+    return {
+        "message": "InsightPilot AI API is running.",
+        "version": settings.app_version,
+        "environment": settings.app_env,
+    }
+
+
+app.include_router(
+    api_router,
+    prefix="/api/v1",
+)

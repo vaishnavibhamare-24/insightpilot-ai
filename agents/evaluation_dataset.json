@@ -1,0 +1,27 @@
+[
+  {
+    "question": "How is churn calculated?",
+    "expected_route": "rag",
+    "expected_agent": "rag_agent"
+  },
+  {
+    "question": "Show monthly revenue",
+    "expected_route": "sql",
+    "expected_agent": "sql_agent"
+  },
+  {
+    "question": "What is the latest data quality score?",
+    "expected_route": "data_quality",
+    "expected_agent": "data_quality_agent"
+  },
+  {
+    "question": "Why did refunds increase?",
+    "expected_route": "root_cause",
+    "expected_agent": "root_cause_agent"
+  },
+  {
+    "question": "Create a chart of monthly revenue",
+    "expected_route": "visualization",
+    "expected_agent": "visualization_agent"
+  }
+]
