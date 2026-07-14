@@ -1,0 +1,8 @@
+feature,importance
+days_since_last_order,0.9073568
+customer_lifetime_days,0.040947773
+total_orders,0.03359769
+purchase_frequency,0.009467232
+average_order_value,0.0030186612
+lifetime_revenue,0.0030090997
+estimated_clv,0.0026028117

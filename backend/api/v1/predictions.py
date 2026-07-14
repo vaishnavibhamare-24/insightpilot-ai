@@ -1,11 +1,16 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import (
+    APIRouter,
+    HTTPException,
+    status,
+)
 
 from backend.schemas.predictions import (
     ChurnPredictionRequest,
     ChurnPredictionResponse,
 )
-from backend.services.churn_prediction_service import (
-    ChurnPredictionService,
+from backend.services.sagemaker_prediction_service import (
+    SageMakerPredictionError,
+    SageMakerPredictionService,
 )
 
 router = APIRouter()
@@ -14,22 +19,27 @@ router = APIRouter()
 @router.post(
     "/churn",
     response_model=ChurnPredictionResponse,
+    summary="Predict customer churn",
 )
 def predict_churn(
     request: ChurnPredictionRequest,
 ) -> ChurnPredictionResponse:
     try:
-        result = ChurnPredictionService().predict(
-            request.model_dump()
+        result = (
+            SageMakerPredictionService()
+            .predict_churn(
+                request.model_dump()
+            )
         )
 
-        return ChurnPredictionResponse(**result)
+        return ChurnPredictionResponse(
+            **result
+        )
 
-    except Exception as exc:
+    except SageMakerPredictionError as exc:
         raise HTTPException(
-            status_code=503,
-            detail=(
-                "Unable to generate churn prediction. "
-                f"{type(exc).__name__}"
+            status_code=(
+                status.HTTP_503_SERVICE_UNAVAILABLE
             ),
+            detail=str(exc),
         ) from exc

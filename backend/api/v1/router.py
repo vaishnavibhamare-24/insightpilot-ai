@@ -1,3 +1,4 @@
+from backend.api.v1.rag import router as rag_router
 from backend.api.v1.forecast import (
     router as forecast_router,
 )
@@ -63,4 +64,10 @@ api_router.include_router(
     forecast_router,
     prefix="/forecast",
     tags=["Forecast"],
+)
+
+api_router.include_router(
+    rag_router,
+    prefix="/rag",
+    tags=["Enterprise RAG"],
 )

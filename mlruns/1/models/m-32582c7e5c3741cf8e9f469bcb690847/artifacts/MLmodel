@@ -1,0 +1,22 @@
+artifact_path: file:C:/Users/Vaishnavi/OneDrive/Documents/Projects/InsightPilot-AI/mlruns/1/models/m-32582c7e5c3741cf8e9f469bcb690847/artifacts
+flavors:
+  python_function:
+    data: model.ubj
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.13.2
+  xgboost:
+    code: null
+    data: model.ubj
+    model_class: xgboost.sklearn.XGBClassifier
+    model_format: ubj
+    xgb_version: 3.3.0
+mlflow_version: 3.14.0
+model_id: m-32582c7e5c3741cf8e9f469bcb690847
+model_size_bytes: 292350
+model_uuid: m-32582c7e5c3741cf8e9f469bcb690847
+prompts: null
+run_id: d811df731f1140e4983b07d67287939a
+utc_time_created: '2026-07-12 16:21:41.259611'

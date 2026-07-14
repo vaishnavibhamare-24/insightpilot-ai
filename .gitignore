@@ -26,3 +26,17 @@ htmlcov/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Environment files
+.env
+
+# Virtual environment
+.venv/
+
+# Python caches
+__pycache__/
+.pytest_cache/
+.cache/
+
+# RAG evaluation output
+rag/evaluation/results/*.json

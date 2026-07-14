@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field
 
 
 class ChurnPredictionRequest(BaseModel):
+    
     total_orders: int = Field(ge=0)
     lifetime_revenue: float = Field(ge=0)
     average_order_value: float = Field(ge=0)
@@ -10,11 +11,12 @@ class ChurnPredictionRequest(BaseModel):
     purchase_frequency: float = Field(ge=0)
     estimated_clv: float = Field(ge=0)
 
-
 class ChurnPredictionResponse(BaseModel):
     churn_prediction: int
     churn_probability: float
     risk_level: str
+    endpoint_name: str | None = None
+    latency_ms: float | None = None
 
 
 class RevenueForecastItem(BaseModel):

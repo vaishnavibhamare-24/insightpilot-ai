@@ -1,0 +1,32 @@
+[
+  {
+    "question": "Which features are used by the churn model?",
+    "reference_answer": "The churn model uses days since last order, total spend, number of orders, average order value, refund count, refund amount, support ticket count, website visits, purchase events, and customer tenure days.",
+    "expected_source": "churn_model_guide.md"
+  },
+  {
+    "question": "What should happen when a refund exceeds its order amount?",
+    "reference_answer": "The refund should be flagged for review because an approved refund should not exceed the original order amount.",
+    "expected_source": "refund_policy.md"
+  },
+  {
+    "question": "How is average order value calculated?",
+    "reference_answer": "Average order value equals total qualifying revenue divided by the number of qualifying orders.",
+    "expected_source": "metric_definitions.md"
+  },
+  {
+    "question": "Why is a random train-test split not used for revenue forecasting?",
+    "reference_answer": "A random split can leak future information, so older months are used for training and newer months for testing.",
+    "expected_source": "revenue_forecast_guide.md"
+  },
+  {
+    "question": "What values are allowed for the churn label?",
+    "reference_answer": "The churn label must be either 0 or 1.",
+    "expected_source": "data_quality_guide.md"
+  },
+  {
+    "question": "What is the threshold for high churn risk?",
+    "reference_answer": "High churn risk is assigned when churn probability is 0.70 or greater.",
+    "expected_source": "churn_model_guide.md"
+  }
+]
