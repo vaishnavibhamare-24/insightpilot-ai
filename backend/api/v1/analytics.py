@@ -1,9 +1,16 @@
 from fastapi import (
     APIRouter,
+    Depends,
     HTTPException,
+    Request,
     status,
 )
 
+from backend.api.dependencies.authentication import (
+    verify_api_key,
+)
+from backend.config.settings import get_settings
+from backend.core.rate_limit import limiter
 from backend.schemas.analytics import (
     AthenaQueryRequest,
     AthenaQueryResponse,
@@ -14,7 +21,9 @@ from backend.services.athena_service import (
     UnsafeQueryError,
 )
 
+
 router = APIRouter()
+settings = get_settings()
 
 
 @router.post(
@@ -25,15 +34,22 @@ router = APIRouter()
         "Executes one safe read-only SQL query against "
         "the InsightPilot Glue Data Catalog database."
     ),
+    dependencies=[
+        Depends(verify_api_key),
+    ],
+)
+@limiter.limit(
+    settings.rate_limit_analytics
 )
 def run_athena_query(
-    request: AthenaQueryRequest,
+    request: Request,
+    payload: AthenaQueryRequest,
 ) -> AthenaQueryResponse:
     try:
         result = AthenaService().execute_query(
-            query=request.query,
-            timeout_seconds=request.timeout_seconds,
-            max_results=request.max_results,
+            query=payload.query,
+            timeout_seconds=payload.timeout_seconds,
+            max_results=payload.max_results,
         )
 
         return AthenaQueryResponse(**result)
@@ -46,12 +62,16 @@ def run_athena_query(
 
     except AthenaQueryError as exc:
         raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            status_code=(
+                status.HTTP_503_SERVICE_UNAVAILABLE
+            ),
             detail=str(exc),
         ) from exc
 
     except RuntimeError as exc:
         raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            status_code=(
+                status.HTTP_503_SERVICE_UNAVAILABLE
+            ),
             detail=str(exc),
         ) from exc

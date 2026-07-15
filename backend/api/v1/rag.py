@@ -1,5 +1,13 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import (
+    APIRouter,
+    Depends,
+    HTTPException,
+    status,
+)
 
+from backend.api.dependencies.authentication import (
+    verify_api_key,
+)
 from backend.schemas.rag import (
     RAGQueryRequest,
     RAGQueryResponse,
@@ -9,6 +17,7 @@ from backend.services.bedrock_rag_service import (
     BedrockRAGService,
 )
 
+
 router = APIRouter()
 
 
@@ -16,6 +25,9 @@ router = APIRouter()
     "/query",
     response_model=RAGQueryResponse,
     summary="Ask the InsightPilot Knowledge Base",
+    dependencies=[
+        Depends(verify_api_key),
+    ],
 )
 def query_knowledge_base(
     request: RAGQueryRequest,
@@ -30,12 +42,16 @@ def query_knowledge_base(
 
     except BedrockRAGError as exc:
         raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            status_code=(
+                status.HTTP_503_SERVICE_UNAVAILABLE
+            ),
             detail=str(exc),
         ) from exc
 
     except RuntimeError as exc:
         raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            status_code=(
+                status.HTTP_503_SERVICE_UNAVAILABLE
+            ),
             detail=str(exc),
         ) from exc

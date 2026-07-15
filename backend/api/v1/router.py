@@ -6,7 +6,9 @@ from backend.api.v1.analytics import (
 from backend.api.v1.chat import (
     router as chat_router,
 )
-from backend.api.v1.endpoints import data_quality
+from backend.api.v1.dashboard import (
+    router as dashboard_router,
+)
 from backend.api.v1.forecast import (
     router as forecast_router,
 )
@@ -46,12 +48,6 @@ api_router.include_router(
 )
 
 api_router.include_router(
-    data_quality.router,
-    prefix="/data-quality",
-    tags=["Data Quality"],
-)
-
-api_router.include_router(
     predictions_router,
     prefix="/predictions",
     tags=["Predictions"],
@@ -60,7 +56,7 @@ api_router.include_router(
 api_router.include_router(
     forecast_router,
     prefix="/forecast",
-    tags=["Forecast"],
+    tags=["Forecasting"],
 )
 
 api_router.include_router(
@@ -73,4 +69,10 @@ api_router.include_router(
     chat_router,
     prefix="/chat",
     tags=["Multi-Agent AI"],
+)
+
+api_router.include_router(
+    dashboard_router,
+    prefix="/dashboard",
+    tags=["Dashboard"],
 )

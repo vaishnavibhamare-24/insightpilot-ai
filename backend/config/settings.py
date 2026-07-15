@@ -11,6 +11,28 @@ class Settings(BaseSettings):
     app_name: str = "InsightPilot AI"
     app_version: str = "1.0.0"
     app_env: str = "development"
+    app_description: str = (
+        "Enterprise data, machine learning, and agentic AI platform."
+    )
+    debug: bool = False
+    log_level: str = "INFO"
+
+    # API settings
+    api_v1_prefix: str = "/api/v1"
+
+    cors_origins: str = (
+        "http://localhost:3000,http://127.0.0.1:3000"
+    )
+
+    api_key_enabled: bool = True
+    api_key: str = ""
+
+    rate_limit_enabled: bool = True
+    rate_limit_default: str = "100/minute"
+    rate_limit_chat: str = "10/minute"
+    rate_limit_analytics: str = "20/minute"
+
+    request_timeout_seconds: int = 120
 
     # AWS settings
     aws_region: str = "us-east-1"
@@ -68,6 +90,14 @@ class Settings(BaseSettings):
         "monitoring/churn/reports"
     )
 
+    @property
+    def cors_origin_list(self) -> list[str]:
+        return [
+            origin.strip()
+            for origin in self.cors_origins.split(",")
+            if origin.strip()
+        ]
+
     # Pydantic settings configuration
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -79,4 +109,3 @@ class Settings(BaseSettings):
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
-
