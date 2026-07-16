@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import logging
+
 from fastapi import (
     APIRouter,
     Depends,
@@ -17,6 +19,7 @@ from backend.services.dashboard_service import (
     DashboardService,
 )
 
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -29,8 +32,7 @@ router = APIRouter()
         Depends(verify_api_key),
     ],
 )
-def get_dashboard_metrics(
-) -> DashboardMetricsResponse:
+def get_dashboard_metrics() -> DashboardMetricsResponse:
     try:
         result = DashboardService().get_metrics()
 
@@ -39,11 +41,11 @@ def get_dashboard_metrics(
         )
 
     except Exception as exc:
+        logger.exception(
+            "Dashboard metrics failed"
+        )
+
         raise HTTPException(
-            status_code=(
-                status.HTTP_503_SERVICE_UNAVAILABLE
-            ),
-            detail=(
-                "Unable to load dashboard metrics."
-            ),
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=f"Unable to load dashboard metrics: {exc}",
         ) from exc
