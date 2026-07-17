@@ -1,145 +1,141 @@
-# InsightPilot AI
+<div align="center">
 
-An end-to-end AI-powered customer analytics platform built on AWS that combines data engineering, machine learning, generative AI, and real-time streaming.
+# 🧠 InsightPilot AI
 
----
+### End-to-End AI-Powered Customer Analytics Platform on AWS
 
-## Project Overview
+*Data Engineering · Machine Learning · Generative AI · Real-Time Streaming*
 
-InsightPilot AI helps businesses analyze customer behavior, predict churn, answer business questions using natural language, and monitor real-time customer events.
+[![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![AWS](https://img.shields.io/badge/AWS-Cloud-FF9900?style=flat-square&logo=amazonaws&logoColor=white)](https://aws.amazon.com/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-Frontend-000000?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![LangChain](https://img.shields.io/badge/LangChain-RAG-1C3C3C?style=flat-square)](https://www.langchain.com/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](#)
 
-The project demonstrates a production-style AI system using AWS cloud services, FastAPI, Next.js, machine learning, Retrieval-Augmented Generation (RAG), and streaming analytics.
-
----
-
-## Features
-
-- Customer churn prediction using XGBoost
-- AI-powered business assistant using Amazon Bedrock
-- Retrieval-Augmented Generation (RAG)
-- Real-time event streaming using Amazon Kinesis
-- Automated ETL using AWS Glue
-- SQL analytics using Amazon Athena
-- FastAPI backend APIs
-- Next.js frontend dashboard
-- Data quality validation
-- CloudWatch monitoring
-- SageMaker model integration
+</div>
 
 ---
 
-## Tech Stack
+## 📌 Overview
 
-### Languages
+**InsightPilot AI** helps businesses analyze customer behavior, predict churn, answer natural-language business questions, and monitor real-time customer events — all in one production-style platform.
 
+The project demonstrates a full AI system built on AWS cloud infrastructure, combining **FastAPI**, **Next.js**, **machine learning**, **Retrieval-Augmented Generation (RAG)**, and **streaming analytics** into a single cohesive pipeline.
+
+---
+
+## ✨ Features
+
+| Capability | Description |
+|---|---|
+| 📉 **Churn Prediction** | XGBoost model forecasts customer churn risk |
+| 🤖 **AI Business Assistant** | Natural-language Q&A powered by Amazon Bedrock |
+| 🔍 **RAG Pipeline** | Retrieval-Augmented Generation over company documentation |
+| ⚡ **Real-Time Streaming** | Live customer event ingestion via Amazon Kinesis |
+| 🔄 **Automated ETL** | AWS Glue jobs handle transformation at scale |
+| 🗃️ **SQL Analytics** | Serverless querying via Amazon Athena |
+| 🚀 **FastAPI Backend** | High-performance REST APIs |
+| 🖥️ **Next.js Dashboard** | Modern, responsive frontend |
+| ✅ **Data Quality Validation** | Automated checks across the pipeline |
+| 📊 **CloudWatch Monitoring** | Full observability into system health |
+| 🧬 **SageMaker Integration** | Managed model training and deployment |
+
+---
+
+## 🏗️ Architecture
+
+<div align="center">
+<img width="800" alt="InsightPilot AI Architecture" src="https://github.com/user-attachments/assets/b65c6b9b-7a6d-4dcc-8e83-c8fd288fb7e5" />
+</div>
+
+---
+
+## 🔄 Project Workflow
+
+```mermaid
+flowchart TD
+    A[Raw Data] --> B[Amazon S3]
+    B --> C[Glue Crawlers]
+    C --> D[Glue ETL]
+    D --> E[Processed S3]
+    E --> F[Athena]
+    F --> G[FastAPI APIs]
+    G --> H[ML + Bedrock RAG]
+    H --> I[Next.js Dashboard]
+```
+
+---
+
+## 🧰 Tech Stack
+
+<table>
+<tr>
+<td valign="top" width="33%">
+
+**Languages**
 - Python
 - SQL
 - TypeScript
 
-### Backend
-
+**Backend**
 - FastAPI
 - Pydantic
 - LangChain
 - LangGraph
 
-### Machine Learning
+</td>
+<td valign="top" width="33%">
 
+**Machine Learning**
 - Scikit-Learn
 - XGBoost
 - SageMaker
 
-### Generative AI
-
+**Generative AI**
 - Amazon Bedrock
 - Claude
 - RAG
 - LangChain
 
-### Frontend
+</td>
+<td valign="top" width="33%">
 
+**Frontend**
 - Next.js
 - React
 - Tailwind CSS
 
-### AWS
+**AWS**
+- S3 · Glue · Athena
+- Bedrock · SageMaker
+- Lambda · Kinesis
+- CloudWatch · IAM
 
-- Amazon S3
-- AWS Glue
-- Athena
-- Bedrock
-- SageMaker
-- Lambda
-- Kinesis
-- CloudWatch
-- IAM
+</td>
+</tr>
+</table>
 
 ---
 
-## Architecture
+## 🔌 APIs
 
-<img width="1536" height="1024" alt="ChatGPT Image Jul 16, 2026, 11_16_34 PM" src="https://github.com/user-attachments/assets/b65c6b9b-7a6d-4dcc-8e83-c8fd288fb7e5" />
-
----
-
-## Project Workflow
-
-Raw Data
-
-↓
-
-Amazon S3
-
-↓
-
-Glue Crawlers
-
-↓
-
-Glue ETL
-
-↓
-
-Processed S3
-
-↓
-
-Athena
-
-↓
-
-FastAPI APIs
-
-↓
-
-Machine Learning + Bedrock RAG
-
-↓
-
-Next.js Dashboard
+| Endpoint Group | Purpose |
+|---|---|
+| `Analytics API` | Aggregated customer and business metrics |
+| `Churn Prediction API` | Real-time churn scoring |
+| `RAG Chat API` | Natural-language business Q&A |
+| `Streaming API` | Live event ingestion and monitoring |
+| `Health API` | Service health checks |
 
 ---
 
-## APIs
+## 🤖 Machine Learning
 
-- Analytics API
-- Churn Prediction API
-- RAG Chat API
-- Streaming API
-- Health API
+**Model:** XGBoost
+**Prediction Target:** Customer Churn
 
----
-
-## Machine Learning
-
-Model:
-XGBoost
-
-Prediction:
-Customer Churn
-
-Features
-
+**Features used:**
 - Lifetime Revenue
 - Purchase Frequency
 - Average Order Value
@@ -148,26 +144,25 @@ Features
 
 ---
 
-## AI Assistant
+## 💬 AI Assistant
 
-The AI assistant uses Amazon Bedrock Knowledge Base and Retrieval-Augmented Generation to answer business questions using company documentation.
-
----
-
-## Future Improvements
-
-- Docker deployment
-- CI/CD pipeline
-- ECS deployment
-- Cognito authentication
-- Auto scaling
+The AI assistant uses an **Amazon Bedrock Knowledge Base** with **Retrieval-Augmented Generation** to answer business questions grounded in company documentation — no hallucinated answers, just retrieval-backed responses.
 
 ---
 
-## Author
+## 🛣️ Roadmap
 
-Vaishnavi Bhamare
+- [ ] Docker deployment
+- [ ] CI/CD pipeline
+- [ ] ECS deployment
+- [ ] Cognito authentication
+- [ ] Auto scaling
 
-MS Advanced Data Analytics
+---
 
-University of North Texas
+## 👩‍💻 Author
+
+**Vaishnavi Bhamare**
+MS Advanced Data Analytics · University of North Texas
+
+[![Email](https://img.shields.io/badge/Email-vaishnavibhamare24%40gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:vaishnavibhamare24@gmail.com)
