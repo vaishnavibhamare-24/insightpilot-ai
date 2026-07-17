@@ -11,6 +11,9 @@ InsightPilot AI helps businesses analyze customer behavior, predict churn, answe
 The project demonstrates a production-style AI system using AWS cloud services, FastAPI, Next.js, machine learning, Retrieval-Augmented Generation (RAG), and streaming analytics.
 
 ---
+## Architecture
+<img width="1536" height="1024" alt="ChatGPT Image Jul 16, 2026, 11_16_34 PM" src="https://github.com/user-attachments/assets/1561324b-f005-4d5a-8902-e4745130b87c" />
+
 
 ## Features
 
