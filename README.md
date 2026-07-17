@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧠 InsightPilot AI
+# InsightPilot AI
 
 ### End-to-End AI-Powered Customer Analytics Platform on AWS
 
